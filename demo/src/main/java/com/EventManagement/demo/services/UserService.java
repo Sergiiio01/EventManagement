@@ -33,4 +33,25 @@ public class UserService {
     public List<User> getUsersByEvent(String event){
         return this.users.get(event);
     }
+
+    public void cancelReservation(String email){
+
+        int index = -1;
+        for(List<User> users: this.users.values()){
+            for(User user: users){
+
+                if(user.getEmail().equals(email)){
+                     index = users.indexOf(user);
+                     break;
+
+                }
+            }
+            if(index != -1){
+                users.remove(index);
+            }
+
+
+        }
+
+    }
 }
